@@ -3,7 +3,7 @@ import scroll from './js/scroll';
 import topArrow from './js/lift-up';
 
 import fetchPixabay from './js/fetch-pixabay';
-import cardTemplate from './template-card.hbs';
+// import cardTemplate from './template-card.hbs';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
@@ -81,7 +81,7 @@ async function loadMore() {
     const response = await fetchPixabay(searchingData, page);
 
     renderCard(response.hits);
-    //додаємо нові картинки
+    //додаємо нові картинки//
     perPage += response.hits.length;
     scroll();
     //загальна кількість фото,я кщо більше чи рівно на кількості на беку//
