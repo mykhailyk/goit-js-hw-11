@@ -7,7 +7,7 @@
   height: 65px;
   border-color: transparent;
   border-radius: 50%;
-  background-color: #0fa4b5;
+  background-color: #025058;
 
   &::before,
   &::after {
@@ -41,7 +41,7 @@
 }
 
 .lift_up:hover {
-  background-color: #4169e1;
+  background-color: #73b7be;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }

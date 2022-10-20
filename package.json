@@ -21,6 +21,7 @@
     "axios": "^1.1.3",
     "hbs": "^4.2.0",
     "lazyload": "^2.0.0-rc.2",
+    "lodash": "^4.17.21",
     "modern-normalize": "^1.1.0",
     "notiflix": "^3.2.5",
     "simplelightbox": "^2.10.4"
@@ -30,6 +31,7 @@
     "buffer": "^6.0.3",
     "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",
+    "parcel-transformer-hbs": "^1.0.4",
     "posthtml-include": "^1.7.4",
     "process": "^0.11.10"
   },

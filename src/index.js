@@ -3,7 +3,7 @@ import scroll from './js/scroll';
 import topArrow from './js/lift-up';
 
 import fetchPixabay from './js/fetch-pixabay';
-// import cardTemplate from './template-card.hbs';
+import cardTemplate from './template-card.hbs';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
