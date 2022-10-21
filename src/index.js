@@ -20,7 +20,7 @@ const refs = {
 //топ ап//
 topArrow();
 
-//функція приховування кнопки при вводі пустого рядка//
+//функція приховування кнопки при вводі пустого рядку//
 refs.searchForm.addEventListener('submit', e => {
   refs.gallery.innerHTML = '';
   onFormSubmit(e);
@@ -47,7 +47,7 @@ async function onFormSubmit(e) {
   const response = await fetchPixabay(searchingData, page);
   perPage = response.hits.length;
 
-  //если кол-во картинок в апишке меньше либо равно количеству картинок на 52 строке, то удлаяет кнопку лоад мо и выводит финальную цитату
+  //якщо к-ть картинок на апі менше чи рівно к-ті картинок на 52 рядку, то видаляти кнопку load mo і виводити фінальний вираз//
   if (response.totalHits <= perPage) {
     addISHidden();
   } else {
@@ -75,7 +75,7 @@ refs.loadMoreBtn.addEventListener('click', loadMore);
 
 async function loadMore() {
   try {
-    //функція при кліку вимикається кнопка і додажться ще одлна сторінка//
+    //функція при кліку вимикається кнопка і додається ще одна сторінка//
     refs.loadMoreBtn.disabled = true;
     pageIncrement();
     const response = await fetchPixabay(searchingData, page);
