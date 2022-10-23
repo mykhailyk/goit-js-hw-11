@@ -35,7 +35,8 @@ let perPage = 0;
 async function onFormSubmit(e) {
   e.preventDefault();
   //отримую значення на 41, кожного разу при пошуку видаю 42//
-  searchingData.trim() = e.currentTarget.searchQuery.value;
+  searchingData = e.currentTarget.searchQuery.value;
+  searchingData.trim();
   page = 1;
   //прибираю зайві пробіли і пустий рядок//
   if (searchingData === '') {
@@ -46,21 +47,21 @@ async function onFormSubmit(e) {
   ///searchingData - умови пошуку, + page це номер сторінки, яка відразу виводиться на екран (по замовчуванню перша)//
   try {
     const response = await fetchPixabay(searchingData, page);
-  perPage = response.hits.length;
+    perPage = response.hits.length;
 
-  //якщо к-ть картинок на апі менше чи рівно к-ті картинок на 52 рядку, то видаляти кнопку load mo і виводити фінальний вираз//
-  if (response.totalHits <= perPage) {
-    addISHidden();
-  } else {
-    removeIsHidden();
-  }
+    //якщо к-ть картинок на апі менше чи рівно к-ті картинок на 52 рядку, то видаляти кнопку load mo і виводити фінальний вираз//
+    if (response.totalHits <= perPage) {
+      addISHidden();
+    } else {
+      removeIsHidden();
+    }
 
-  if (response.totalHits === 0) {
-    clearGalleryHTML();
-    refs.endcollectionText.classList.add('is-hidden');
-    Notify.failure('Ні, такого я не знайду');
-  }
-  
+    if (response.totalHits === 0) {
+      clearGalleryHTML();
+      refs.endcollectionText.classList.add('is-hidden');
+      Notify.failure('Ні, такого я не знайду');
+    }
+
     if (response.totalHits > 0) {
       Notify.info(`Окай! Завантажую ще ${response.totalHits} одиниць контенту`);
       clearGalleryHTML();
@@ -115,12 +116,12 @@ function clearGalleryHTML() {
   refs.gallery.innerHTML = '';
 }
 
-  let lightbox = new SimpleLightbox('.gallery a', {
-    captions: true,
-    captionsData: 'alt',
-    captionPosition: 'bottom',
-    captionDelay: 250,
-  });
+let lightbox = new SimpleLightbox('.gallery a', {
+  captions: true,
+  captionsData: 'alt',
+  captionPosition: 'bottom',
+  captionDelay: 250,
+});
 
 function lightbox() {
   lightbox.refresh();
