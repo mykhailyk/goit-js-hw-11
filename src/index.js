@@ -44,9 +44,7 @@ async function onFormSubmit(e) {
   }
   //апі
   ///searchingData - умови пошуку, + page це номер сторінки, яка відразу виводиться на екран (по замовчуванню перша)//
-
   const response = await fetchPixabay(searchingData, page);
-
   perPage = response.hits.length;
 
   //якщо к-ть картинок на апі менше чи рівно к-ті картинок на 52 рядку, то видаляти кнопку load mo і виводити фінальний вираз//
@@ -68,7 +66,6 @@ async function onFormSubmit(e) {
       renderCard(response.hits);
     }
   } catch (error) {
-    Notify.info(`Вибачте, спробуйте пізніше.`);
     console.log(error);
   }
 }
@@ -96,7 +93,6 @@ async function loadMore() {
     refs.loadMoreBtn.disabled = false;
   } catch (error) {
     console.log(error);
-    Notify.info(`Вибачте, спробуйте пізніше.`);
   }
 }
 //API//
@@ -115,15 +111,13 @@ function pageIncrement() {
 function clearGalleryHTML() {
   refs.gallery.innerHTML = '';
 }
-
-let lightbox = new SimpleLightbox('.gallery a', {
-  captions: true,
-  captionsData: 'alt',
-  captionPosition: 'bottom',
-  captionDelay: 250,
-});
-
 function lightbox() {
+  let lightbox = new SimpleLightbox('.gallery a', {
+    captions: true,
+    captionsData: 'alt',
+    captionPosition: 'bottom',
+    captionDelay: 250,
+  });
   lightbox.refresh();
 }
 function renderCard(array) {
