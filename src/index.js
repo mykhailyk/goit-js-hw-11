@@ -35,17 +35,18 @@ let perPage = 0;
 async function onFormSubmit(e) {
   e.preventDefault();
   //отримую значення на 41, кожного разу при пошуку видаю 42//
-  searchingData = e.currentTarget.searchQuery.value;
+  searchingData = e.currentTarget.searchQuery.value.trim();
   page = 1;
   //прибираю зайві пробіли і пустий рядок//
-  if (searchingData.trim() === '') {
+  if (searchingData === '') {
     Notify.failure('Будь ласка, введіть що саме шукати');
     return;
   }
   //апі
   ///searchingData - умови пошуку, + page це номер сторінки, яка відразу виводиться на екран (по замовчуванню перша)//
+
+  const response = await fetchPixabay(searchingData, page);
   try {
-    const response = await fetchPixabay(searchingData, page);
     perPage = response.hits.length;
 
     //якщо к-ть картинок на апі менше чи рівно к-ті картинок на 52 рядку, то видаляти кнопку load mo і виводити фінальний вираз//
