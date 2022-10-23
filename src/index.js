@@ -44,22 +44,23 @@ async function onFormSubmit(e) {
   }
   //апі
   ///searchingData - умови пошуку, + page це номер сторінки, яка відразу виводиться на екран (по замовчуванню перша)//
-  const response = await fetchPixabay(searchingData, page);
-  perPage = response.hits.length;
-
-  //якщо к-ть картинок на апі менше чи рівно к-ті картинок на 52 рядку, то видаляти кнопку load mo і виводити фінальний вираз//
-  if (response.totalHits <= perPage) {
-    addISHidden();
-  } else {
-    removeIsHidden();
-  }
-
-  if (response.totalHits === 0) {
-    clearGalleryHTML();
-    refs.endcollectionText.classList.add('is-hidden');
-    Notify.failure('Ні, такого я не знайду');
-  }
   try {
+    const response = await fetchPixabay(searchingData, page);
+    perPage = response.hits.length;
+
+    //якщо к-ть картинок на апі менше чи рівно к-ті картинок на 52 рядку, то видаляти кнопку load mo і виводити фінальний вираз//
+    if (response.totalHits <= perPage) {
+      addISHidden();
+    } else {
+      removeIsHidden();
+    }
+
+    if (response.totalHits === 0) {
+      clearGalleryHTML();
+      refs.endcollectionText.classList.add('is-hidden');
+      Notify.failure('Ні, такого я не знайду');
+    }
+
     if (response.totalHits > 0) {
       Notify.info(`Окай! Завантажую ще ${response.totalHits} одиниць контенту`);
       clearGalleryHTML();
@@ -67,6 +68,7 @@ async function onFormSubmit(e) {
     }
   } catch (error) {
     console.log(error);
+    Notify.failure('Вибачте, спробуйте пізніше');
   }
 }
 
@@ -93,6 +95,7 @@ async function loadMore() {
     refs.loadMoreBtn.disabled = false;
   } catch (error) {
     console.log(error);
+    Notify.failure('Вибачте, спробуйте пізніше');
   }
 }
 //API//
