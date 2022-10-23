@@ -35,10 +35,10 @@ let perPage = 0;
 async function onFormSubmit(e) {
   e.preventDefault();
   //отримую значення на 41, кожного разу при пошуку видаю 42//
-  searchingData = e.currentTarget.searchQuery.value;
+  searchingData = e.currentTarget.searchQuery.value.trim();
   page = 1;
   //прибираю зайві пробіли і пустий рядок//
-  if (searchingData.trim() === '') {
+  if (searchingData === '') {
     Notify.failure('Будь ласка, введіть що саме шукати');
     return;
   }
