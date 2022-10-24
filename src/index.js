@@ -115,14 +115,16 @@ function clearGalleryHTML() {
   refs.gallery.innerHTML = '';
 }
 function lightbox() {
-  let lightbox = new SimpleLightbox('.gallery a', {
-    captions: true,
-    captionsData: 'alt',
-    captionPosition: 'bottom',
-    captionDelay: 250,
-  });
   lightbox.refresh();
 }
+
+let lightbox = new SimpleLightbox('.gallery a', {
+  captions: true,
+  captionsData: 'alt',
+  captionPosition: 'bottom',
+  captionDelay: 250,
+});
+
 function renderCard(array) {
   const cardMarkup = array.map(item => cardTemplate(item)).join('');
   refs.gallery.insertAdjacentHTML('beforeend', cardMarkup);
