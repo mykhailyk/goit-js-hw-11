@@ -114,9 +114,9 @@ function pageIncrement() {
 function clearGalleryHTML() {
   refs.gallery.innerHTML = '';
 }
-function lightbox() {
-  lightbox.refresh();
-}
+// function lightbox() {
+//   lightbox.refresh();
+// }
 
 let lightbox = new SimpleLightbox('.gallery a', {
   captions: true,
@@ -128,5 +128,5 @@ let lightbox = new SimpleLightbox('.gallery a', {
 function renderCard(array) {
   const cardMarkup = array.map(item => cardTemplate(item)).join('');
   refs.gallery.insertAdjacentHTML('beforeend', cardMarkup);
-  lightbox();
+  lightbox.refresh();
 }
